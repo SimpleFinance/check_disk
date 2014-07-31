@@ -56,6 +56,7 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     path_stat.blocks
   end
 
+  # @return [Fixnum] percentage of amount
   def percent_of(amount, percent)
     amount / 100 * percent
   end
