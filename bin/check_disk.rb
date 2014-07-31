@@ -28,10 +28,12 @@ class CheckDisk < Sensu::Plugin::Check::CLI
 
   private
 
+  # @return [String] The path passed in (or its default).
   def path
     config[:path]
   end
 
+  # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
   def path_stat
     @fs ||= Filesystem.stat(path)
   end
