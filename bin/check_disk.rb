@@ -36,18 +36,22 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     @fs ||= Filesystem.stat(path)
   end
 
-  def inodes_free
+  # @return [Fixnum] number of available file serial numbers (inodes).
+  def inodes_available
     path_stat.files_free
   end
 
+  # @return [Fixnum] total number of file serial numbers (inodes).
   def inodes_total
     path_stat.files
   end
 
-  def blocks_free
+  # @return [Fixnum] number of available blocks.
+  def blocks_available
     path_stat.blocks_free
   end
 
+  # @return [Fixnum] total number of blocks.
   def blocks_total
     path_stat.blocks
   end
