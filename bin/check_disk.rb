@@ -23,6 +23,7 @@ class CheckDisk < Sensu::Plugin::Check::CLI
 
   include Sys
 
+  # Sensu check run loop.
   def run
     unknown 'Not Implemented'
   end
