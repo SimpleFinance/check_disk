@@ -86,37 +86,52 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     amount / 100 * percent
   end
 
+  # Adds a `-p` or `--path` option to our CLI.
+  # Sets `config[:path]`
+  # @return [String] The `path` or `mount point` we are checking.
   option(
     :path,
     short: '-p PATH',
-    description: ''
+    description: 'The `path` or `mount point` we are checking.'
   )
 
+  # Adds a `--inodes` option to our CLI.
+  # Sets `config[:inodes]`
+  # @return [TrueClass, FalseClass] Boolean for enabling inode code path.
   option(
     :inodes,
     boolean: true,
-    description: ''
+    description: 'Boolean for enabling inode code path.'
   )
 
+  # Adds a `--blocks` option to our CLI.
+  # Sets `config[:blocks]`
+  # @return [TrueClass, FalseClass] Boolean for enabling block code path.
   option(
     :blocks,
     boolean: true,
-    description: ''
+    description: 'Boolean for enabling block code path.'
   )
 
+  # Adds a `-w` or `--warning` option to our CLI.
+  # Sets `config[:warning]`
+  # @return [Fixnum] The high water mark for `warning` alerts.
   option(
     :warning,
     short: '-w PERCENT',
     proc: proc { |a| a.to_i },
     default: 85,
-    description: ''
+    description: 'The high water mark for `warning` alerts.'
   )
 
+  # Adds a `-c` or `--critical` option to our CLI.
+  # Sets `config[:critical]`
+  # @return [Fixnum] The high water mark for `critical` alerts.
   option(
     :critical,
     short: '-c PERCENT',
     proc: proc { |a| a.to_i },
     default: 95,
-    description: ''
+    description: 'The high water mark for `critical` alerts.'
   )
 end
