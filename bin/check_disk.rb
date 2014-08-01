@@ -93,7 +93,7 @@ class CheckDisk < Sensu::Plugin::Check::CLI
   option(
     :path,
     short: '-p PATH',
-    description: 'The `path` or `mount point` we are checking.'
+    description: 'The `path` or `mount point` we are checking. eg; /mnt'
   )
 
   # Adds a `--inodes` option to our CLI.
@@ -122,7 +122,7 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     short: '-w PERCENT',
     proc: proc { |a| a.to_i },
     default: 85,
-    description: 'The high water mark for `warning` alerts.'
+    description: 'The high water mark for `warning` alerts. eg; 50'
   )
 
   # Adds a `-c` or `--critical` option to our CLI.
@@ -133,6 +133,6 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     short: '-c PERCENT',
     proc: proc { |a| a.to_i },
     default: 95,
-    description: 'The high water mark for `critical` alerts.'
+    description: 'The high water mark for `critical` alerts. eg; 75'
   )
 end
