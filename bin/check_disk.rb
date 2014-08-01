@@ -54,6 +54,12 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     inodes_total - inodes_available
   end
 
+  # @param percent [Fixnum] the percentage to check.
+  # @return [Fixnum] computed inodes used by percent.
+  def inodes_used_from_percent(percent)
+    percent_of(inodes_total, percent)
+  end
+
   # @return [Fixnum] number of available blocks.
   def blocks_available
     path_stat.blocks_free
@@ -69,31 +75,15 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     blocks_total - blocks_available
   end
 
+  # @param percent [Fixnum] the percentage to check.
+  # @return [Fixnum] computed blocks used by percent.
+  def blocks_used_from_percent(percent)
+    percent_of(blocks_total, percent)
+  end
+
   # @return [Fixnum] percentage of amount
   def percent_of(amount, percent)
     amount / 100 * percent
-  end
-
-  def check_blocks
-    warning if blocks_warning?
-    critical if percent_critical?(blocks_total)
-  end
-
-  def blocks_warning?
-    percent_warn?(blocks_total)
-  end
-
-  def check_inodes
-    warning if percent_warn?(inodes_total)
-    critical if percent_critical?(inodes_total)
-  end
-
-  def percent_warn?(amount)
-    percent_of(amount, config[:warning])
-  end
-
-  def percent_critical?
-    percent_of(amount, config[:critical])
   end
 
   option(
