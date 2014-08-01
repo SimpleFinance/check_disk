@@ -12,7 +12,8 @@ require 'sys/filesystem'
 # Determines usage by subtracting `available` from `total number`
 # Compares usage to see if greater than baseline.
 #
-# See statvfs(3)
+# See: statvfs(3)
+# See: https://github.com/djberg96/sys-filesystem
 #
 # "Because parsing the output of `df` is a bad idea."
 class CheckDisk < Sensu::Plugin::Check::CLI
