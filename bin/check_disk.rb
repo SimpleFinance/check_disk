@@ -49,6 +49,11 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     path_stat.files
   end
 
+  # @return [Fixnum] total number of inodes used.
+  def inodes_used
+    inodes_total - inodes_available
+  end
+
   # @return [Fixnum] number of available blocks.
   def blocks_available
     path_stat.blocks_free
@@ -57,6 +62,11 @@ class CheckDisk < Sensu::Plugin::Check::CLI
   # @return [Fixnum] total number of blocks.
   def blocks_total
     path_stat.blocks
+  end
+
+  # @return [Fixnum] total number of blocks used.
+  def blocks_used
+    blocks_total - blocks_available
   end
 
   # @return [Fixnum] percentage of amount
