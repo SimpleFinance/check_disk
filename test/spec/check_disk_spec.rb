@@ -9,7 +9,7 @@ describe CheckDisk, '' do
   end
 
   describe 'Object Ancestry Checks' do
-    it 'Is a ChefInstance::Install::Template?' do
+    it 'Is a Sensu CLI Check Plugin?' do
       @check.must_be_kind_of(Sensu::Plugin::Check::CLI)
     end
   end
