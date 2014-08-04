@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 require_relative '../../bin/check_disk'
 
 describe CheckDisk, '' do
-  let(:check) { CheckDisk.new }
+  let(:check) { CheckDisk::CLI.new }
 
   before :each do
     @check = check
