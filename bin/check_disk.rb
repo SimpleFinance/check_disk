@@ -3,20 +3,20 @@
 require 'sensu-plugin/check/cli'
 require 'sys/filesystem'
 
-# A Sensu Plugin to check disk block and inode usage by mountpoint.
-# Takes a mount point in as `path`.
-# Takes warning, and critical parameters that set a percentage [0-100].
-# Takes parameters to check either file serial numbers (inodes) _or_ blocks.
-# Determines `total number` of inodes|blocks.
-# Determines baseline `percent` based on `total number`.
-# Determines usage by subtracting `available` from `total number`
-# Compares usage to see if greater than baseline.
-#
-# See: statvfs(3)
-# See: https://github.com/djberg96/sys-filesystem
-#
-# "Because parsing the output of `df` is a bad idea."
 module CheckDisk
+  # A Sensu Plugin to check disk block and inode usage by mountpoint.
+  # Takes a mount point in as `path`.
+  # Takes warning, and critical parameters that set a percentage [0-100].
+  # Takes parameters to check either file serial numbers (inodes) _or_ blocks.
+  # Determines `total number` of inodes|blocks.
+  # Determines baseline `percent` based on `total number`.
+  # Determines usage by subtracting `available` from `total number`
+  # Compares usage to see if greater than baseline.
+  #
+  # See: statvfs(3)
+  # See: https://github.com/djberg96/sys-filesystem
+  #
+  # "Because parsing the output of `df` is a bad idea."
   class CLI < Sensu::Plugin::Check::CLI
     def initialize
       super
