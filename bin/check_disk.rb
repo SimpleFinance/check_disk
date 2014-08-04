@@ -45,6 +45,12 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     config[:critical]
   end
 
+  # Until this extracted to a class the version lives here.
+  # @return [String] The version of this program.
+  def version
+    '0.1.0'
+  end
+
   # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
   def path_stat
     @fs ||= Filesystem.stat(path)
