@@ -36,12 +36,12 @@ class CheckDisk < Sensu::Plugin::Check::CLI
   end
 
   # @return [Fixnum] The warning passed in.
-  def warning
+  def config_warning
     config[:warning]
   end
 
   # @return [Fixnum] The critical passed in.
-  def critical
+  def config_critical
     config[:critical]
   end
 
