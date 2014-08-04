@@ -35,6 +35,16 @@ class CheckDisk < Sensu::Plugin::Check::CLI
     config[:path]
   end
 
+  # @return [Fixnum] The warning passed in.
+  def warning
+    config[:warning]
+  end
+
+  # @return [Fixnum] The critical passed in.
+  def critical
+    config[:critical]
+  end
+
   # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
   def path_stat
     @fs ||= Filesystem.stat(path)
