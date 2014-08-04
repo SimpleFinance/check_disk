@@ -9,6 +9,24 @@ module CheckDisk
 
     include Sys
 
+    def total
+      blocks_total
+    end
+
+    def available
+      blocks_available
+    end
+
+    def used
+      blocks_used
+    end
+
+    def percent_used
+      percent_of_blocks_used
+    end
+
+    private
+
     # @return [Fixnum] number of available blocks.
     def blocks_available
       path_stat.blocks_free
@@ -26,11 +44,9 @@ module CheckDisk
 
     # @param percent [Fixnum] the percentage to check.
     # @return [Fixnum] computed blocks used by percent.
-    def blocks_used_from_percent(percent)
-      percent_of(blocks_total, percent)
+    def percent_of_blocks_used
+      percent_of(blocks_total, blocks_used)
     end
-
-    private
 
     # @return [Fixnum] percentage of amount
     def percent_of(amount, percent)
