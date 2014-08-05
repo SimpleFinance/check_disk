@@ -29,7 +29,7 @@ module CheckDisk
 
     # @return [Fixnum] number of available file serial numbers (inodes).
     def inodes_available
-      path_stat.files_free
+      path_stat.files_available
     end
 
     # @return [Fixnum] total number of file serial numbers (inodes).
