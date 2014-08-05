@@ -48,9 +48,10 @@ module CheckDisk
       percent_of(inodes_total, inodes_used)
     end
 
+    # FIXME
     # @return [Fixnum] percentage of amount
-    def percent_of(amount, percent)
-      amount / 100 * percent
+    def percent_of(total, used)
+      ((used.to_f / total.to_f) * 100).to_i
     end
 
     # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
