@@ -14,8 +14,7 @@ describe CheckDisk, '' do
   let(:filesystem) do
     OpenStruct.new(
       files: 121_846_308,
-      files_available: 42_461_553,
-      files_free: 42_461_553
+      files_available: 42_461_553
     )
   end
 
