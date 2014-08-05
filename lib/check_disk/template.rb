@@ -25,17 +25,17 @@ module CheckDisk
 
     # @return [String] The path passed in (or its default).
     def path
-      config[:path]
+      @config[:path]
     end
 
     # @return [Fixnum] The warning passed in.
     def warning
-      config[:warning]
+      @config[:warning]
     end
 
     # @return [Fixnum] The critical passed in.
     def critical
-      config[:critical]
+      @config[:critical]
     end
   end
 end
