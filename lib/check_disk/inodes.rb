@@ -27,14 +27,14 @@ module CheckDisk
 
     private
 
-    # @return [Fixnum] number of available file serial numbers (inodes).
-    def inodes_available
-      path_stat.files_available
-    end
-
     # @return [Fixnum] total number of file serial numbers (inodes).
     def inodes_total
       path_stat.files
+    end
+
+    # @return [Fixnum] number of available file serial numbers (inodes).
+    def inodes_available
+      path_stat.files_available
     end
 
     # @return [Fixnum] total number of inodes used.
