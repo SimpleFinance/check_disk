@@ -30,6 +30,9 @@ describe CheckDisk::Inode, '' do
     end
   end
 
+  # This test should be moved to a unit test.
+  # It tests a method provided by the template
+  # It modifies class internals to test.
   describe 'Discovers filesystem details.' do
     it 'Can discover the filesystem.' do
       module CheckDisk
