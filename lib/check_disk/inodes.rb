@@ -1,13 +1,11 @@
-require 'sys/filesystem'
+require_relative 'template'
 
 module CheckDisk
   # Interface for checking Inodes.
-  class Inode
+  class Inode < CheckDisk::Template
     def initialize(config)
-      @config = config
+      super
     end
-
-    include Sys
 
     def total
       inodes_total
@@ -45,31 +43,6 @@ module CheckDisk
     # @return [Fixnum] computed inodes used by percent.
     def percent_of_inodes_used
       percent_of(inodes_total, inodes_used)
-    end
-
-    # @return [Fixnum] percentage of amount
-    def percent_of(total, used)
-      ((used.to_f / total.to_f) * 100).to_i
-    end
-
-    # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
-    def path_stat
-      @fs ||= Filesystem.stat(path)
-    end
-
-    # @return [String] The path passed in (or its default).
-    def path
-      config[:path]
-    end
-
-    # @return [Fixnum] The warning passed in.
-    def warning
-      config[:warning]
-    end
-
-    # @return [Fixnum] The critical passed in.
-    def critical
-      config[:critical]
     end
   end
 end
