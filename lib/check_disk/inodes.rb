@@ -42,13 +42,11 @@ module CheckDisk
       inodes_total - inodes_available
     end
 
-    # @param percent [Fixnum] the percentage to check.
     # @return [Fixnum] computed inodes used by percent.
     def percent_of_inodes_used
       percent_of(inodes_total, inodes_used)
     end
 
-    # FIXME
     # @return [Fixnum] percentage of amount
     def percent_of(total, used)
       ((used.to_f / total.to_f) * 100).to_i
