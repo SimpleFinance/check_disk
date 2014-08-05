@@ -31,6 +31,19 @@ describe CheckDisk::Inode, '' do
   end
 
   describe 'Discovers filesystem details.' do
+    it 'Can discover the filesystem.' do
+      module CheckDisk
+        # Adds a public method to gain access to a private method for testing.
+        class Inode
+          def filesystem_details
+            path_stat
+          end
+        end
+      end
+
+      check.must_respond_to(:filesystem_details)
+      check.filesystem_details.must_be_instance_of(Sys::Filesystem::Stat)
+    end
     it 'Can find total number of inodes.' do
       check.must_respond_to(:total)
       check.stub :path_stat, (filesystem) do
