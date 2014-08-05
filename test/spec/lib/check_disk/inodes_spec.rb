@@ -2,7 +2,7 @@ require_relative '../../spec_helper'
 require_relative '../../../../lib/check_disk/inodes'
 require 'ostruct'
 
-describe CheckDisk, '' do
+describe CheckDisk::Inode, '' do
   let(:check) { CheckDisk::Inode.new(config) }
 
   # Sensu CLI would send our program a hash of configuration options.
