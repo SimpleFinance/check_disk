@@ -11,6 +11,8 @@ module CheckDisk
 
     private
 
+    # in-line convert to float so we get '0.<some percent>'
+    # convert our result back to integer to drop the remainder.
     # @return [Fixnum] percentage of amount
     def percent_of(total, used)
       ((used.to_f / total.to_f) * 100).to_i
