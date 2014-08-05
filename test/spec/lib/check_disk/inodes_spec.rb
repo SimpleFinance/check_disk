@@ -4,6 +4,9 @@ require 'ostruct'
 
 describe CheckDisk, '' do
   let(:check) { CheckDisk::Inode.new(config) }
+
+  # Sensu CLI would send our program a hash of configuration options.
+  # @return [Hash] our mock 'config'
   let(:config) do
     {
       path: '/',
@@ -11,6 +14,9 @@ describe CheckDisk, '' do
       critical: 75
     }
   end
+
+  # @return [OpenStruct] a mock object containing some of the output of a
+  # Sys::Filesystem::Stat
   let(:filesystem) do
     OpenStruct.new(
       files: 121_846_308,
