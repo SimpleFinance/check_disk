@@ -23,6 +23,14 @@ module CheckDisk
       percent_of_inodes_used
     end
 
+    def warning?
+      percent_of_inodes_used > warning
+    end
+
+    def critical?
+      percent_of_inodes_used > critical
+    end
+
     private
 
     # @return [Fixnum] total number of file serial numbers (inodes).
