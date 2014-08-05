@@ -53,7 +53,7 @@ describe CheckDisk, '' do
     it 'Can find percent of inodes used.' do
       @check.must_respond_to(:percent_used)
       @check.stub :path_stat, (filesystem) do
-        @check.percent_used.must_equal(55)
+        @check.percent_used.must_equal(65)
       end
     end
   end
