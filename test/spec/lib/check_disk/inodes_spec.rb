@@ -56,5 +56,19 @@ describe CheckDisk, '' do
         @check.percent_used.must_equal(65)
       end
     end
+
+    it 'Can tell us if we are warning?' do
+      @check.must_respond_to(:warning?)
+      @check.stub :path_stat, (filesystem) do
+        @check.warning?.must_equal(true)
+      end
+    end
+
+    it 'Can tell us if we are critical?' do
+      @check.must_respond_to(:warning?)
+      @check.stub :path_stat, (filesystem) do
+        @check.critical?.must_equal(false)
+      end
+    end
   end
 end
