@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'sensu-plugin/check/cli'
-require 'sys/filesystem'
 
 module CheckDisk
   # A Sensu Plugin to check disk block and inode usage by mountpoint.
