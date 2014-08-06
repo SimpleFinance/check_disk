@@ -21,8 +21,6 @@ module CheckDisk
       super
     end
 
-    include Sys
-
     # Sensu check run loop.
     def run
       ok 'Not Implemented'
