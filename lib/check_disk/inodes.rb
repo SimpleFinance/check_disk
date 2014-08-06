@@ -33,7 +33,7 @@ module CheckDisk
 
     def message
       "#{ percent_of_inodes_used }% of inodes used. " \
-      "total: #{ total } available: #{ available }"
+      "path: #{ path } total: #{ total } available: #{ available }"
     end
 
     private
