@@ -31,6 +31,11 @@ module CheckDisk
       percent_of_inodes_used > critical
     end
 
+    def message
+      "#{ percent_of_inodes_used }% of inodes used. " \
+      "total: #{ total } available: #{ available }"
+    end
+
     private
 
     # @return [Fixnum] total number of file serial numbers (inodes).

@@ -35,6 +35,11 @@ module CheckDisk
       percent_of_blocks_used > critical
     end
 
+    def message
+      "#{ percent_of_blocks_used }% of blocks used. " \
+      "total: #{ total } available: #{ available }"
+    end
+
     private
 
     # @return [Fixnum] number of available blocks.
