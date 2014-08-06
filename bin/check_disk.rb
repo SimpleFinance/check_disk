@@ -45,6 +45,7 @@ module CheckDisk
       critical if disk.critical?
       ok
     end
+
     private
 
     # Adds a `-p` or `--path` option to our CLI.
