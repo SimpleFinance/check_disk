@@ -27,6 +27,7 @@ module CheckDisk
     def run
       check_blocks if config[:blocks]
       check_inodes if config[:inodes]
+      ok 'Nothing was passed. We are happy.'
     end
 
     def check_blocks
