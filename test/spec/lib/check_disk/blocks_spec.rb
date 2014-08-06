@@ -1,5 +1,5 @@
 require_relative '../../spec_helper'
-require_relative '../../../../lib/check_disk/blocks'
+require 'check_disk/blocks'
 require 'ostruct'
 
 describe CheckDisk::Block, '' do

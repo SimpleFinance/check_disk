@@ -1,5 +1,5 @@
 require_relative '../../spec_helper'
-require_relative '../../../../lib/check_disk/inodes'
+require 'check_disk/inodes'
 require 'ostruct'
 
 describe CheckDisk::Inode, '' do
