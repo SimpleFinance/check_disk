@@ -50,3 +50,7 @@ CheckDisk::CLI WARNING: 65% of inodes used. path: / total: 121846308 available: 
 or
 
 `bundle exec rake test:all`
+
+## Coverage
+
+View test coverage executing `make test` then opening `coverage/index.html`
