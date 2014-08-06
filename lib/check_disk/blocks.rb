@@ -1,13 +1,11 @@
-require 'sys/filesystem'
+require_relative 'template'
 
 module CheckDisk
   # Interface for checking Inodes.
-  class Block
+  class Block < CheckDisk::Template
     def initialize(config)
-      @config = config
+      super
     end
-
-    include Sys
 
     def total
       blocks_total
@@ -25,11 +23,23 @@ module CheckDisk
       percent_of_blocks_used
     end
 
+    # Boolean method for determining if we are 'warning?'
+    # @return [TrueClass, FalseClass] Warning True or False?
+    def warning?
+      percent_of_blocks_used > warning
+    end
+
+    # Boolean method for determining if we are 'critical?'
+    # @return [TrueClass, FalseClass] Critical True or False?
+    def critical?
+      percent_of_blocks_used > critical
+    end
+
     private
 
     # @return [Fixnum] number of available blocks.
     def blocks_available
-      path_stat.blocks_free
+      path_stat.blocks_available
     end
 
     # @return [Fixnum] total number of blocks.
@@ -46,31 +56,6 @@ module CheckDisk
     # @return [Fixnum] computed blocks used by percent.
     def percent_of_blocks_used
       percent_of(blocks_total, blocks_used)
-    end
-
-    # @return [Fixnum] percentage of amount
-    def percent_of(amount, percent)
-      amount / 100 * percent
-    end
-
-    # @return [Sys::Filesystem::Stat] a data structure about our filesystem.
-    def path_stat
-      @fs ||= Filesystem.stat(path)
-    end
-
-    # @return [String] The path passed in (or its default).
-    def path
-      config[:path]
-    end
-
-    # @return [Fixnum] The warning passed in.
-    def warning
-      config[:warning]
-    end
-
-    # @return [Fixnum] The critical passed in.
-    def critical
-      config[:critical]
     end
   end
 end
