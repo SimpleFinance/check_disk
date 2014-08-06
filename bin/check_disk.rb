@@ -62,6 +62,7 @@ module CheckDisk
     # @return [TrueClass, FalseClass] Boolean for enabling inode code path.
     option(
       :inodes,
+      short: '-i',
       boolean: true,
       description: 'Boolean for enabling inode code path.'
     )
@@ -71,6 +72,7 @@ module CheckDisk
     # @return [TrueClass, FalseClass] Boolean for enabling block code path.
     option(
       :blocks,
+      short: '-b',
       boolean: true,
       description: 'Boolean for enabling block code path.'
     )
