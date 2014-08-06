@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'sensu-plugin/check/cli'
+require_relative '../lib/check_disk/blocks'
+require_relative '../lib/check_disk/inodes'
 
 module CheckDisk
   # A Sensu Plugin to check disk block and inode usage by mountpoint.
@@ -23,9 +25,26 @@ module CheckDisk
 
     # Sensu check run loop.
     def run
-      ok 'Not Implemented'
+      check_blocks if config[:blocks]
+      check_inodes if config[:inodes]
     end
 
+    def check_blocks
+      disk = CheckDisk::Block.new(config)
+      common_check(disk)
+    end
+
+    def check_inodes
+      disk = CheckDisk::Inode.new(config)
+      common_check(disk)
+    end
+
+    def common_check(disk)
+      message(disk.message)
+      warning if disk.warning?
+      critical if disk.critical?
+      ok
+    end
     private
 
     # Adds a `-p` or `--path` option to our CLI.
