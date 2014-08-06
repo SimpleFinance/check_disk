@@ -1,4 +1,4 @@
-require_relative 'template'
+require 'check_disk/template'
 
 module CheckDisk
   # Interface for checking Inodes.

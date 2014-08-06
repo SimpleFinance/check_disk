@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'sensu-plugin/check/cli'
-require_relative '../lib/check_disk/blocks'
-require_relative '../lib/check_disk/inodes'
+require 'check_disk/blocks'
+require 'check_disk/inodes'
 
 module CheckDisk
   # A Sensu Plugin to check disk block and inode usage by mountpoint.
