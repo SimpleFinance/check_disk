@@ -6,15 +6,17 @@ Gem::Specification.new do |spec|
   spec.version       = CheckDisk::VERSION
   spec.authors       = ['Miah Johnson']
   spec.email         = %w(miah@simple.com)
-  spec.description   = 'Sensu CLI Command Check for disk inode and block ' \
-                       ' usage written as a library.'
+  spec.description   = 'Sensu/Nagios CLI Command Check for disk' \
+                       ' inode and block usage.'
   spec.summary       = 'Sensu CLI Command Check for disk inode and block usage.'
-  spec.homepage      = 'https://github.com/SimpleFinance/sensu_check_disk'
+  spec.homepage      = 'https://github.com/SimpleFinance/check_disk'
   spec.license       = 'Apache-2.0'
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(/^bin/) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(/^(test|spec|features)/)
   spec.require_paths = %w(lib)
+  spec.cert_chain    = ['certs/miah_johnson.pem']
+  spec.signing_key   = '/Users/miah/.gem_certs/gem-private_key.pem'
 
   spec.add_runtime_dependency 'sensu-plugin', '~> 0.3', '>= 0.3.0'
   spec.add_runtime_dependency 'sys-filesystem', '~> 1.1', '>= 1.1.2'
