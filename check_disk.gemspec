@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'check_disk'
   spec.version       = CheckDisk::VERSION
   spec.authors       = ['Miah Johnson']
-  spec.email         = %w(miah@simple.com)
+  spec.email         = %w(miah@chia-pet.org)
   spec.description   = 'Sensu/Nagios CLI Command Check for disk' \
                        ' inode and block usage.'
   spec.summary       = 'Sensu CLI Command Check for disk inode and block usage.'
