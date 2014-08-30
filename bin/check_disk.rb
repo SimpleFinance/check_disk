@@ -45,7 +45,7 @@ module CheckDisk
     def check_blocks_and_inodes
       check_blocks
       check_inodes
-      ok 'block and inode usage lower than warning parameter.'
+      ok 'block and inode usage lower than warning threshold.'
     end
 
     def check_blocks
