@@ -25,9 +25,27 @@ module CheckDisk
 
     # Sensu check run loop.
     def run
-      check_blocks if config[:blocks]
-      check_inodes if config[:inodes]
-      ok 'You need to pass either `-i` or `-b`.'
+      blocks if config[:blocks]
+      inodes if config[:inodes]
+      check_blocks_and_inodes
+    end
+
+    private
+
+    def blocks
+      check_blocks
+      ok
+    end
+
+    def inodes
+      check_inodes
+      ok
+    end
+
+    def check_blocks_and_inodes
+      check_blocks
+      check_inodes
+      ok 'block and inode usage lower than warning parameter.'
     end
 
     def check_blocks
@@ -44,10 +62,7 @@ module CheckDisk
       message(disk.message)
       warning if disk.warning?
       critical if disk.critical?
-      ok
     end
-
-    private
 
     # Adds a `-p` or `--path` option to our CLI.
     # Sets `config[:path]`
