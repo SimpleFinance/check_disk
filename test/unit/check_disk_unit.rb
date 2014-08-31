@@ -37,10 +37,10 @@ class TestCheckExternal < MiniTest::Test
     assert $CHILD_STATUS.exitstatus == 2 && output.include?('failed')
   end
 
+  # Do we see the right message when OK?
   def test_argv
-    output = run_script '-p / -w 1 -c 1'
-    assert $CHILD_STATUS.exitstatus == 0 && output.include?('path: /'),
-           "output was: #{ output }"
+    output = run_script '-p / -w 100 -c 100'
+    assert $CHILD_STATUS.exitstatus == 0 && output.include?('threshold')
   end
 
   def test_bad_commandline
