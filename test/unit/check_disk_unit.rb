@@ -23,7 +23,7 @@ class TestCheckExternal < MiniTest::Test
 
   # If the disk is more than 1% used we should exit critical.
   def test_critical
-    run_script '-c 1'
+    run_script '-p / -c 10 -w 100'
     assert $CHILD_STATUS.exitstatus == 2, 'Did not exit critical.'
   end
 
