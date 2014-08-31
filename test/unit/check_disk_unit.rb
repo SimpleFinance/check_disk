@@ -17,7 +17,7 @@ class TestCheckExternal < MiniTest::Test
 
   # If the disk is more than 1% used we should exit warning.
   def test_warning
-    run_script '-w 1'
+    run_script '-p / -c 100 -w 10'
     assert $CHILD_STATUS.exitstatus == 1, 'Did not exit warning.'
   end
 
