@@ -15,9 +15,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(/^bin/) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(/^(test|spec|features)/)
   spec.require_paths = %w(lib)
-  unless ENV['CI'].eql?(true)
-    spec.cert_chain    = ['certs/miah_johnson.pem']
-    spec.signing_key   = '/Users/miah/.gem_certs/gem-private_key.pem'
+  unless ENV['CI'].eql?('true') || ENV['CONTINUOUS_INTEGRATION'].eql?('true')
+    spec.cert_chain  = ['certs/miah_johnson.pem']
+    spec.signing_key = '/Users/miah/.gem_certs/gem-private_key.pem'
   end
   spec.add_runtime_dependency 'sensu-plugin', '~> 0.3', '>= 0.3.0'
   spec.add_runtime_dependency 'sys-filesystem', '~> 1.1', '>= 1.1.2'
