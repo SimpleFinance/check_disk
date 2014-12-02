@@ -100,7 +100,7 @@ module CheckDisk
     option(
       :warning,
       short: '-w PERCENT',
-      proc: proc { |a| a.to_i },
+      proc: proc(&:to_i),
       default: 50,
       description: 'The high water mark for `warning` alerts. eg; 50'
     )
@@ -111,7 +111,7 @@ module CheckDisk
     option(
       :critical,
       short: '-c PERCENT',
-      proc: proc { |a| a.to_i },
+      proc: proc(&:to_i),
       default: 75,
       description: 'The high water mark for `critical` alerts. eg; 75'
     )

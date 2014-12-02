@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 
+# Allow testing our `check_disk` bin file.
 module SensuPluginTestHelper
   def script(script)
     s = Pathname.new(script)
