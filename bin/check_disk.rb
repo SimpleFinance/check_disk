@@ -60,8 +60,8 @@ module CheckDisk
 
     def common_check(disk)
       message(disk.message)
-      warning if disk.warning?
       critical if disk.critical?
+      warning if disk.warning?
     end
 
     # Adds a `-p` or `--path` option to our CLI.
