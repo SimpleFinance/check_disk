@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     spec.cert_chain  = ['certs/miah_johnson.pem']
     spec.signing_key = '/Users/miah/.gem_certs/gem-private_key.pem'
   end
-  spec.add_runtime_dependency 'sensu-plugin', '~> 0.3', '>= 0.3.0'
+  spec.add_runtime_dependency 'sensu-plugin', '>= 1.1.0'
   spec.add_runtime_dependency 'sys-filesystem', '~> 1.1', '>= 1.1.2'
   spec.add_development_dependency 'minitest', '~> 5.3', '>= 5.3.1'
   spec.add_development_dependency 'rake', '~> 10.3', '>= 10.3.0'
