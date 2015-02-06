@@ -32,11 +32,6 @@ class TestCheckExternal < MiniTest::Test
     assert $CHILD_STATUS.exitstatus == 1
   end
 
-  def test_exception
-    output = run_script '-f'
-    assert $CHILD_STATUS.exitstatus == 2 && output.include?('failed')
-  end
-
   # Do we see the right message when OK?
   def test_argv
     output = run_script '-p / -w 100 -c 100'
@@ -45,8 +40,8 @@ class TestCheckExternal < MiniTest::Test
 
   def test_bad_commandline
     output = run_script '--doesnotexist'
-    assert $CHILD_STATUS.exitstatus == 2 &&
+    assert $CHILD_STATUS.exitstatus == 1 &&
       output.include?('doesnotexist') &&
-      output.include?('invalid option')
+      output.include?('Invalid check argument(s)')
   end
 end
